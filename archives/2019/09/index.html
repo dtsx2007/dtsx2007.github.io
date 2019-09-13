@@ -122,6 +122,41 @@
         <article class="post">
             
                     <h1 class="post-title">
+                        <a href="/2019/09/13/爬虫常见的反爬策略-持续更新/">
+                            爬虫常见的反爬策略(持续更新)
+                        </a>
+                    </h1>
+
+                    <ul class="post-date">
+                        <li>
+                            September 13, 2019
+                        </li>
+                        <li>
+                            不爱吃鱼
+                        </li>
+                    </ul>
+                    
+                    <div class="post-content ">
+                        <h3 id="爬虫中常见的反爬策略"><a href="#爬虫中常见的反爬策略" class="headerlink" title="爬虫中常见的反爬策略"></a>爬虫中常见的反爬策略</h3><ul>
+<li><p>限制ip</p>
+<ul>
+<li>解决方法：建立ip代理池每次发送请求，随机在代理池中取出代理ip</li>
+</ul>
+</li>
+<li><p>字体反爬</p>
+<ul>
+<li>网站显示的文字或数字和获取到的响应中的文字不一样，或是乱码，一般就是因为设置了不一样的字体，比如字体里1对应了别的数字，而不是1</li>
+<li>解决方法：找出字体文件，读取字体文件，获取字体中对应的映射，组成字典，替换响应中的文字和数字 </li>
+</ul>
+</li>
+</ul>
+                            <a href="/2019/09/13/爬虫常见的反爬策略-持续更新/" class="more-link">Continue reading</a>
+                    </div>
+        </article>
+        
+        <article class="post">
+            
+                    <h1 class="post-title">
                         <a href="/2019/09/12/hello-world/">
                             Hello World
                         </a>

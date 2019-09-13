@@ -116,28 +116,23 @@
     </div>
 </header>
         <main class="main">
-            
-<section class="posts">
+            <article class="post">
     
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2019/09/13/爬虫常见的反爬策略-持续更新/">
-                            爬虫常见的反爬策略(持续更新)
-                        </a>
-                    </h1>
-
-                    <ul class="post-date">
-                        <li>
-                            September 13, 2019
-                        </li>
-                        <li>
-                            不爱吃鱼
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        <h3 id="爬虫中常见的反爬策略"><a href="#爬虫中常见的反爬策略" class="headerlink" title="爬虫中常见的反爬策略"></a>爬虫中常见的反爬策略</h3><ul>
+    
+    
+    <h2 class="post-title">
+        爬虫常见的反爬策略(持续更新)
+    </h2>
+    <ul class="post-date">
+        <li>
+            2019-09-13
+        </li>
+        <li>
+            不爱吃鱼
+        </li>
+    </ul>
+    <div class="post-content">
+        <h3 id="爬虫中常见的反爬策略"><a href="#爬虫中常见的反爬策略" class="headerlink" title="爬虫中常见的反爬策略"></a>爬虫中常见的反爬策略</h3><ul>
 <li><p>限制ip</p>
 <ul>
 <li>解决方法：建立ip代理池每次发送请求，随机在代理池中取出代理ip</li>
@@ -150,35 +145,65 @@
 </ul>
 </li>
 </ul>
-                            <a href="/2019/09/13/爬虫常见的反爬策略-持续更新/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-        <article class="post">
-            
-                    <h1 class="post-title">
-                        <a href="/2019/09/12/hello-world/">
-                            Hello World
-                        </a>
-                    </h1>
+<a id="more"></a>
 
-                    <ul class="post-date">
-                        <li>
-                            September 12, 2019
-                        </li>
-                        <li>
-                            不爱吃鱼
-                        </li>
-                    </ul>
-                    
-                    <div class="post-content ">
-                        
-                            <a href="/2019/09/12/hello-world/" class="more-link">Continue reading</a>
-                    </div>
-        </article>
-        
-</section>
+<ul>
+<li><p>css反爬</p>
+<ul>
+<li>暂未见到</li>
+</ul>
+</li>
+<li><p>验证码</p>
+<ul>
+<li>打码平台</li>
+</ul>
+</li>
+<li><p>js写入cookie</p>
+<ul>
+<li><p>请求时得到的响应是一对JS，和源码完全不一样，而且获取到的status是521，这种情况一般就是js设置了cookie，第二次浏览器带着第一次js写入的cookie继续请求，就得到了正常的页面</p>
+</li>
+<li><p>解决：研究js，扣出关键代码，第一次发送请求后，模拟生成cookie，携带发送请求</p>
+</li>
+</ul>
+</li>
+<li><p>js加密ajax请求参数</p>
+<ul>
+<li><p>获取的响应中没有所需数据，那么数据一般就是通过ajax请求返回的，ajax请求一般会携带参数，如果参数是一串很长，看起来没什么意义的字符，那么这个就是参数加密了，想要模拟发送ajax请求，就需要破解这个ajax参数</p>
+</li>
+<li><p>解决方法：在chrome调试工具中，设置XHR/fetch Breakpoints,填入ajax请求地址的关键字符，调式的时候，会自动跳入发送ajax请求的地方，找到加密参数，研究加密算法，用python模拟js运行</p>
+</li>
+</ul>
+</li>
+<li><p>ajax返回加密数据</p>
+<ul>
+<li><p>破解了加密参数，成功发送了ajax请求后，发现返回的数据和浏览器显示的完全不一样，而是一串很长的没有意义的字符，那么如果ajax请求地址没有错的话，就是返回的数据也进行了加密</p>
+</li>
+<li><p>解决方法：打上断点，观察回调函数，逐步调试，找到解密相关js代码，模拟js运行，解密</p>
+</li>
+</ul>
+</li>
+<li><p>js反调试</p>
+<ul>
+<li><p>只要F12，就会出现在一个”debugger”的代码那里，无论怎样都跳不出去，这个就是js反调试</p>
+</li>
+<li><p>解决方法(通用)：通过”call stack”找到把我们带入死循环的函数中，重新定义它</p>
+</li>
+<li><p>解决方法(暂未测试可行性)：在左边代码行出，打上断点，右键点击添加条件，填入False，就可以解决</p>
+</li>
+</ul>
+</li>
+<li><p>js发送鼠标点击事件</p>
+<ul>
+<li><p>请求页面是，浏览器还随同请求了别的页面，比如图片</p>
+</li>
+<li><p>解决方法：发送请求之前，先发送附带的请求，让服务器以为是浏览器发送过来的正常请求</p>
+</li>
+</ul>
+</li>
+</ul>
 
+    </div>
+</article>
         </main>
         <aside class="aside">
             <div class="close"></div>
